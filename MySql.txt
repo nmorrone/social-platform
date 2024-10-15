@@ -4,16 +4,16 @@
     //se voglio selezionare solo username, email e compleanno
 -   select username, email, birthdate
     from users u 
-    left join posts p on p.user_id = u.id
-    left join media_post mp on mp.post_id = p.id
-    left join medias m on m.id = mp.media_id
+    inner join posts p on p.user_id = u.id
+    inner join media_post mp on mp.post_id = p.id
+    inner join medias m on m.id = mp.media_id
     where m.`type` = "video";
 
 -   select * 
     from users u 
-    left join posts p on p.us
-    left join media_post mp o
-    left join medias m on m.i
+    inner join posts p on p.us
+    inner join media_post mp o
+    inner join medias m on m.i
     where m.`type` = "video";
 
 
@@ -45,7 +45,7 @@ ________________________________________________________________________________
 
 -   select count(*), user_id , u.username 
     from medias m
-    left join users u on u.id = m.user_id 
+    join join users u on u.id = m.user_id 
     group by user_id
     order by count(*);
 
@@ -58,6 +58,6 @@ ________________________________________________________________________________
 -   select count(*), u.id, username
     from likes l
     inner join posts p on p.id = l.post_id 
-    left join users u on u.id = p.user_id 
+    inner join users u on u.id = p.user_id 
     group by u.id
     order by count(*) desc ;
