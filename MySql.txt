@@ -1,0 +1,63 @@
+* 1.    Selezionare tutti gli utenti che hanno postato almeno un video
+        use social_platform;
+
+    //se voglio selezionare solo username, email e compleanno
+-   select username, email, birthdate
+    from users u 
+    left join posts p on p.user_id = u.id
+    left join media_post mp on mp.post_id = p.id
+    left join medias m on m.id = mp.media_id
+    where m.`type` = "video";
+
+-   select * 
+    from users u 
+    left join posts p on p.us
+    left join media_post mp o
+    left join medias m on m.i
+    where m.`type` = "video";
+
+
+___________________________________________________________________________________
+
+
+* 2.	Seleziona tutti i post senza Like (13)
+
+-   select *
+    from posts p 
+    left join likes l on l.post_id = p.id
+    where l.post_id is null;
+
+
+___________________________________________________________________________________
+
+
+* 3.    Conta il numero di likes per ogni post
+
+-   select count(*) as 'numero di likes', post_id as 'id riferimento post'
+    from likes l 
+    group by l.post_id;
+
+
+___________________________________________________________________________________
+
+
+* 4.    Ordina gli utenti per il numero di media caricati (25) 
+
+-   select count(*), user_id , u.username 
+    from medias m
+    left join users u on u.id = m.user_id 
+    group by user_id
+    order by count(*);
+
+
+___________________________________________________________________________________
+
+
+* 5.    Ordina gli utenti per totale di likes ricevuti nei loro posts (25)
+
+-   select count(*), u.id, username
+    from likes l
+    inner join posts p on p.id = l.post_id 
+    left join users u on u.id = p.user_id 
+    group by u.id
+    order by count(*) desc ;
